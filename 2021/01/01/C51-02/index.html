@@ -1,0 +1,326 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>「C51开发」2. 单片机基础理论和引脚 | TJUT Sakitam's Blog</title><meta name="keywords" content="C51"><meta name="author" content="「王圣奇」"><meta name="copyright" content="「王圣奇」"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta name="description" content="单片机简介 前言什么是单片机，目前还没有一个确切的定义。普遍认为单片机是将CPU、RAM、ROM、定时器&#x2F;计数器以及输入输出（I&#x2F;O）接口电路等计算机主要部件集成在一块芯片上，这样所组成的芯片级微型计算机称为单片微型计算机（Single Chip Microcomputer）。简称为单片微机或单片机。  CPU：中央处理器（CPU，Central Processing Unit）作为计算机系统的运">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「C51开发」2. 单片机基础理论和引脚">
+<meta property="og:url" content="http://example.com/2021/01/01/C51-02/index.html">
+<meta property="og:site_name" content="TJUT Sakitam&#39;s Blog">
+<meta property="og:description" content="单片机简介 前言什么是单片机，目前还没有一个确切的定义。普遍认为单片机是将CPU、RAM、ROM、定时器&#x2F;计数器以及输入输出（I&#x2F;O）接口电路等计算机主要部件集成在一块芯片上，这样所组成的芯片级微型计算机称为单片微型计算机（Single Chip Microcomputer）。简称为单片微机或单片机。  CPU：中央处理器（CPU，Central Processing Unit）作为计算机系统的运">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2021/01/01/uYoNwliXHr6TAVc.png">
+<meta property="article:published_time" content="2021-01-01T05:14:12.000Z">
+<meta property="article:modified_time" content="2021-01-01T06:42:59.048Z">
+<meta property="article:author" content="「王圣奇」">
+<meta property="article:tag" content="C51">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/01/01/uYoNwliXHr6TAVc.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2021/01/01/C51-02/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin="crossorigin"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":1,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  ClickShowText: {"text":"富强,民主,文明,和谐,自由,平等,公正,法制,爱国,敬业,诚信,友善","fontSize":"15px"},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+};
+
+var saveToLocal = {
+  set: function setWithExpiry(key, value, ttl) {
+    const now = new Date()
+    const expiryDay = ttl * 86400000
+    const item = {
+      value: value,
+      expiry: now.getTime() + expiryDay,
+    }
+    localStorage.setItem(key, JSON.stringify(item))
+  },
+
+  get: function getWithExpiry(key) {
+    const itemStr = localStorage.getItem(key)
+
+    if (!itemStr) {
+      return undefined
+    }
+    const item = JSON.parse(itemStr)
+    const now = new Date()
+
+    if (now.getTime() > item.expiry) {
+      localStorage.removeItem(key)
+      return undefined
+    }
+    return item.value
+  }
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-01-01 14:42:59'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(function () {  window.activateDarkMode = function () {
+    document.documentElement.setAttribute('data-theme', 'dark')
+    if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+    }
+  }
+  window.activateLightMode = function () {
+    document.documentElement.setAttribute('data-theme', 'light')
+   if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+    }
+  }
+  const autoChangeMode = 'false'
+  const t = saveToLocal.get('theme')
+  if (autoChangeMode === '1') {
+    const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+    const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+    const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+    if (t === undefined) {
+      if (isLightMode) activateLightMode()
+      else if (isDarkMode) activateDarkMode()
+      else if (isNotSpecified || hasNoSupport) {
+        const now = new Date()
+        const hour = now.getHours()
+        const isNight = hour <= 6 || hour >= 18
+        isNight ? activateDarkMode() : activateLightMode()
+      }
+      window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+        if (saveToLocal.get('theme') === undefined) {
+          e.matches ? activateDarkMode() : activateLightMode()
+        }
+      })
+    } else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else if (autoChangeMode === '2') {
+    const now = new Date()
+    const hour = now.getHours()
+    const isNight = hour <= 6 || hour >= 18
+    if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+    else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else {
+    if (t === 'dark') activateDarkMode()
+    else if (t === 'light') activateLightMode()
+  }const asideStatus = saveToLocal.get('aside-status')
+if (asideStatus !== undefined) {
+   if (asideStatus === 'hide') {
+     document.documentElement.classList.add('hide-aside')
+   } else {
+     document.documentElement.classList.remove('hide-aside')
+   }
+}})()</script><meta name="generator" content="Hexo 5.2.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="https://i.loli.net/2020/12/01/YpNFGmuHrZDe7tS.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">3</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div></div></div></div><div id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://i.loli.net/2021/01/01/uYoNwliXHr6TAVc.png)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">TJUT Sakitam's Blog</a></span><span id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div></div><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><h1 class="post-title">「C51开发」2. 单片机基础理论和引脚</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-01-01T05:14:12.000Z" title="发表于 2021-01-01 13:14:12">2021-01-01</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-01-01T06:42:59.048Z" title="更新于 2021-01-01 14:42:59">2021-01-01</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/C51%E5%8D%95%E7%89%87%E6%9C%BA%E5%BC%80%E5%8F%91/">C51单片机开发</a></span></div><div class="meta-secondline"> <span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="单片机简介"><a href="#单片机简介" class="headerlink" title="单片机简介"></a>单片机简介</h1><blockquote>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>什么是单片机，目前还没有一个确切的定义。<br>普遍认为单片机是将CPU、RAM、ROM、定时器/计数器以及输入输出（I/O）接口电路等计算机主要部件集成在一块芯片上，这样所组成的芯片级微型计算机称为单片微型计算机（Single Chip Microcomputer）。简称为单片微机或单片机。</p>
+<blockquote>
+<p>CPU：中央处理器（CPU，Central Processing Unit）作为计算机系统的运算和控制核心，是信息处理、程序运行的最终执行单元。</p>
+</blockquote>
+<blockquote>
+<p>RAM：随机存取存储器（英语：Random Access Memory，缩写：RAM），也叫主存，是与<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/CPU">CPU</a>直接交换数据的内部存储器。它可以随时读写（刷新时除外），而且速度很快，通常作为<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F">操作系统</a>或其他正在运行中的程序的临时数据存储介质。RAM工作时可以随时从任何一个指定的地址写入（存入）或读出（取出）信息。它与ROM的最大区别是数据的易失性，即一旦断电所存储的数据将随之丢失。RAM在计算机和数字系统中用来暂时存储程序、数据和中间结果。</p>
+</blockquote>
+<blockquote>
+<p>ROM：只读存储器（Read-Only Memory，ROM）以非破坏性读出方式工作，只能读出无法写入信息。信息一旦写入后就固定下来，即使切断电源，信息也不会丢失，所以又称为固定存储器。ROM所存数据通常是装入整机前写入的，整机工作过程中只能读出，不像随机存储器能快速方便地改写存储内容。ROM所存数据稳定 ，断电后所存数据也不会改变，并且结构较简单，使用方便，因而常用于存储各种固定程序和数据。</p>
+</blockquote>
+<blockquote>
+<p>I/O：<strong>I/O</strong>（英语：<strong>I</strong>nput/<strong>O</strong>utput），即<strong>输入/输出</strong>，通常指数据在<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%86%85%E9%83%A8%E5%AD%98%E5%82%A8%E5%99%A8">内部存储器</a>和外部存储器或其他周边设备之间的输入和输出。</p>
+</blockquote>
+</blockquote>
+<h2 id="数字电路"><a href="#数字电路" class="headerlink" title="数字电路"></a>数字电路</h2><p>　　在一个控制系统中，单片机是电路的一部分，单片机中的程序是针对其所在的电路编写的。因此，要对单片机编程并实现一定的功能，必须了解整个系统的电路图。编程时很可能要经常参照电路图。与单片机直接相关的电路都是数字电路。<br>　　简单地说，数字电路就是只有“0”和“1”两种信号的电路。判别信号究竟是“0”还是“1”是通过典雅的大小（常称作“电平”）来判断的。<br>　　RS-232电平标准，以-12V至-5V作为逻辑“1”，以5V至12V作为逻辑“5”。<br>　　还有一个“地”的概念，在电路中“地”并不是通常意义中的地，而是指电路中电压被人为规定为0V的一点。</p>
+<h2 id="MCS-51单片机简介"><a href="#MCS-51单片机简介" class="headerlink" title="MCS-51单片机简介"></a>MCS-51单片机简介</h2><p>　　目前生产单片机的公司很多，其中有影响力的intel公司推出的MCS-51系列等。很多公司的产品都是与MCS-51架构兼容（MCS-51 compatible）的。以下采用的atmel公司的AT89C51/52或AT89C51/52单片机，就是兼容MCS-51架构的单片机。<br>　　以下列出各单片机全称与简称的对应表</p>
+<table>
+<thead>
+<tr>
+<th>全称</th>
+<th>简称</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>AT89C51</td>
+<td>C51</td>
+</tr>
+<tr>
+<td>AT89C52</td>
+<td>C52</td>
+</tr>
+<tr>
+<td>AT89C2051</td>
+<td>C2051</td>
+</tr>
+<tr>
+<td>AT89S51</td>
+<td>S51</td>
+</tr>
+<tr>
+<td>AT89S52</td>
+<td>S52</td>
+</tr>
+</tbody></table>
+<p>　　C51拥有4096字节（1字节=8位）的片内程序存储器、128字节的RAM、32个I/O口、两个定时器、6个中断源、1个串口等。</p>
+<blockquote>
+<h3 id="C52、C2051的资源与C51比较"><a href="#C52、C2051的资源与C51比较" class="headerlink" title="C52、C2051的资源与C51比较"></a>C52、C2051的资源与C51比较</h3><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>片内程序存储器大小</th>
+<th>RAM大小</th>
+<th>I/O口个数</th>
+<th>其他</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>C51</td>
+<td>4096字节</td>
+<td>128字节</td>
+<td>32个</td>
+<td>2个定时器、6个中断源、1个串口等</td>
+</tr>
+<tr>
+<td>C52</td>
+<td>8192字节</td>
+<td>256字节</td>
+<td>32个</td>
+<td>3个定时器、6个中断源、1个串口等</td>
+</tr>
+<tr>
+<td>C2051</td>
+<td>2048字节</td>
+<td>128字节</td>
+<td>15个</td>
+<td>2个定时器、6个中断源、1个串口、1个模拟比较器等</td>
+</tr>
+</tbody></table>
+</blockquote>
+<p>　　<strong>值得注意的是：一片单片机可以反复擦写的次数是有效的，atmel的C系列、S系列单片机，官方声称可重复擦写次数为1000次</strong></p>
+<h1 id="引脚"><a href="#引脚" class="headerlink" title="引脚"></a>引脚</h1><blockquote>
+<p><img src="https://i.loli.net/2021/01/01/fPVtohBJ1MH854I.png" alt="C51-2-1.png"></p>
+</blockquote>
+<h2 id="电源引脚"><a href="#电源引脚" class="headerlink" title="电源引脚"></a>电源引脚</h2><p>VCC 40 电源引脚<br>GND 20 接地引脚<br>工作电压为4V至5.5V</p>
+<h2 id="外接晶体引脚"><a href="#外接晶体引脚" class="headerlink" title="外接晶体引脚"></a>外接晶体引脚</h2><blockquote>
+<p><img src="https://i.loli.net/2021/01/01/ta5pUGFjq7RusDf.png" alt="C51-2-2.png"></p>
+</blockquote>
+<p>　　XTAL1 19 / XTAL2 18：<br>    　　XTAL1是片内振荡器的反相放大器输入端，XTAL2则是输出端，使用外部振荡器时，外部震荡信号应直接加到XTAL1，而XTAL2悬空。内部方式时，时钟发生器对振荡脉冲二分频，如晶振为12MHz，时钟频率就为6MHz。晶振的频率最高可以达到33MHz（C5x系列为24MHz）。电容取30pF±10pF。<br>    　　单片机程序指令的执行是以振荡器的振荡来驱动的。在MCS-51架构中，每12个振荡器周期组成一个指令周期（或称机器周期）。单片机执行指令的时间是以指令周期为单位的。不同指令的执行时间可能是不同的，一条指令的执行事件最短为一个指令周期。因此，单片机锁接的振荡器频率越高，它执行指令的速度就越快。</p>
+<h2 id="复位RST-9"><a href="#复位RST-9" class="headerlink" title="复位RST 9"></a>复位RST 9</h2><blockquote>
+<p><img src="https://i.loli.net/2021/01/01/CufpKoIBwhz81Mj.png" alt="C51-2-3.png"></p>
+</blockquote>
+<p>　　在振荡器运行时，有两个机器周期（24个振荡周期）以上的高电平出现在此引脚时，将使单片机复位，只要这个引脚保持高电平，单片机便一直处于复位状态。复位后P0~P3口均置1，引脚表现为高电平，程序计数器和特殊功能寄存器SFR全部清零。当复位引脚由高电平变为低电平时，芯片从ROM的00H处开始运行程序。复位操作不会对内部RAM有所影响。<br>　　<strong>当单片机上电时，由于电容的作用，RST引脚会处于短暂的高电平状态，直到电容充电到一定程度时，RST引脚的电平会被8.2K的电阻拉低，单片机开始运行程序。</strong><br>　　图中的按键为手动复位按键，<strong>当按下复位按键后，RST引脚会被1K的电阻上拉至高电平，单片机复位，按钮松开后，RST恢复低电平，单片机重新从程序存储器的00H处运行程序。</strong><br>　　手动复位按键在单片机的最小系统中并不是必须的，但对单片机的复位控制会方便些。</p>
+<h2 id="输入输出引脚-I-O"><a href="#输入输出引脚-I-O" class="headerlink" title="输入输出引脚(I/O)"></a>输入输出引脚(I/O)</h2><h3 id="P0端口-P0-0—P0-7"><a href="#P0端口-P0-0—P0-7" class="headerlink" title="P0端口[P0.0—P0.7]"></a>P0端口[P0.0—P0.7]</h3><p>　　P0是一个8位漏极开路型双向I/O端口，端口置1（对端口写1）时作高阻抗输入端。作为输出口时能驱动8个TTL。P0端口要外接上拉电阻。</p>
+<h3 id="P1端口-P1-0—P1-7"><a href="#P1端口-P1-0—P1-7" class="headerlink" title="P1端口[P1.0—P1.7]"></a>P1端口[P1.0—P1.7]</h3><p>　　P1是一个带有内部上拉电阻的8位双向I/O端口。输出时可驱动4个TTL。端口置1时，内部上拉电阻将端口拉到高电平，作输入用。对内部Flash程序存储器编程时，接受低8位地址信息。除此之外P1端口还用于一些专门功能，具体表现见下表</p>
+<table>
+<thead>
+<tr>
+<th>P1.引脚</th>
+<th>兼用功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>P1.0</td>
+<td>T2（外部计数器）、时钟输出（C51、S51无此功能）</td>
+</tr>
+<tr>
+<td>P1.1</td>
+<td>T2EX（定时器2捕捉和重载触发及方向控制）（C51、S51无此功能）</td>
+</tr>
+<tr>
+<td>P1.5</td>
+<td>MOSI（用于在线编程）（C51、S51无此功能）</td>
+</tr>
+<tr>
+<td>P1.6</td>
+<td>MISO（用于在线编程）（C51、S51无此功能）</td>
+</tr>
+<tr>
+<td>P1.7</td>
+<td>SCK（用于在线编程）（C51、S51无此功能）</td>
+</tr>
+</tbody></table>
+<h3 id="P2端口-P2-0—P2-7"><a href="#P2端口-P2-0—P2-7" class="headerlink" title="P2端口[P2.0—P2.7]"></a>P2端口[P2.0—P2.7]</h3><p>　　P2是一个带有内部上拉电阻的8位双向I/O端口，输出时可驱动4个TTL。端口置1时，内部上拉电阻将端口拉到高电平，作输入用。对内部Flash程序存储器编程时，接受高8位地址和控制信息。在访问外部程序和16位外部数据存储器时，P2口送出高8位地址。而在访问8位地址的外部数据存储器时其引脚上的内容在此期间不会改变。</p>
+<h3 id="P3端口-P3-0—P3-7"><a href="#P3端口-P3-0—P3-7" class="headerlink" title="P3端口[P3.0—P3.7]"></a>P3端口[P3.0—P3.7]</h3><p>　　P3是一个带有内部上拉电阻的8位双向I/O端口，输出时可驱动4个TTL。端口置1时，内部上拉电阻将端口拉到高电平，作输入用。对内部Flash程序存储器编程时，接控制信息。除此之外P3端口还用于一些专门功能，功能见下表</p>
+<table>
+<thead>
+<tr>
+<th>P3.引脚</th>
+<th>兼用功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>P3.0</td>
+<td>串行通信输入（RXD）</td>
+</tr>
+<tr>
+<td>P3.1</td>
+<td>串行通信输出（TXD）</td>
+</tr>
+<tr>
+<td>P3.2</td>
+<td>外部中断0（INT0）</td>
+</tr>
+<tr>
+<td>P3.3</td>
+<td>外部中断1（INT1）</td>
+</tr>
+<tr>
+<td>P3.4</td>
+<td>定时器0输入（T0）</td>
+</tr>
+<tr>
+<td>P3.5</td>
+<td>定时器1输入（T1）</td>
+</tr>
+<tr>
+<td>P3.6</td>
+<td>外部数据存储器写选通WR</td>
+</tr>
+<tr>
+<td>P3.7</td>
+<td>外部数据存储器写选通RD</td>
+</tr>
+</tbody></table>
+<h2 id="其他的控制或复用引脚"><a href="#其他的控制或复用引脚" class="headerlink" title="其他的控制或复用引脚"></a>其他的控制或复用引脚</h2><h3 id="ALE-PROG-30"><a href="#ALE-PROG-30" class="headerlink" title="ALE/-PROG 30"></a>ALE/-PROG 30</h3><p>　　访问外部存储器时，ALE（地址锁存允许）的输出用于锁存地址的低位字节。即使不访问外部存储器，ALE端仍以不变的频率输出脉冲信号（此信号是振荡器频率的1/6）。在访问外部数据存储器时，出现一个ALE脉冲。对Flash存储器编程时，这个引脚用于输入编程脉冲PROG。</p>
+<h3 id="PSEN-29"><a href="#PSEN-29" class="headerlink" title="PSEN 29"></a>PSEN 29</h3><p>　　该引脚时外部程序存储器的选通信号输出端。当S52由外部程序存储器取指令或常数时，每个机器周期输出2个脉冲既两次有效。但访问外部数据存储器时，将不会有脉冲数出。</p>
+<h3 id="EA-VPP-31"><a href="#EA-VPP-31" class="headerlink" title="-EA/VPP 31"></a>-EA/VPP 31</h3><p>　　外部访问允许端。当该引脚访问外部程序存储器时，应输入低电平。要使S52只访问外部程序存储器（地址为0000H-FFFFH），这时该引脚必须保持低电平。当使用内部的程序存储器时，此引脚应与VCC相连。对Flash存储器编程时，用于施加VPP编程电压。</p>
+</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/C51/">C51</a></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2021/01/01/uYoNwliXHr6TAVc.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2020/12/01/C51-01/"><img class="next-cover" src="https://i.loli.net/2020/12/01/gYVOvhFy1rQ5ds7.png" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">「C51开发」1. Visual Studio 2019 + VS Code 模式开发环境</div></div></a></div></nav></div><div class="aside_content" id="aside_content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-avatar is-center"><img class="avatar-img" src="https://i.loli.net/2020/12/01/YpNFGmuHrZDe7tS.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">「王圣奇」</div><div class="author-info__description"></div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">3</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Sakitam1023"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/Sakitam1023" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:tjwsq-qiqiqi@outlook.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="card-content"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%95%E7%89%87%E6%9C%BA%E7%AE%80%E4%BB%8B"><span class="toc-number">1.</span> <span class="toc-text">单片机简介</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF"><span class="toc-number">1.2.</span> <span class="toc-text">数字电路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MCS-51%E5%8D%95%E7%89%87%E6%9C%BA%E7%AE%80%E4%BB%8B"><span class="toc-number">1.3.</span> <span class="toc-text">MCS-51单片机简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#C52%E3%80%81C2051%E7%9A%84%E8%B5%84%E6%BA%90%E4%B8%8EC51%E6%AF%94%E8%BE%83"><span class="toc-number">1.3.1.</span> <span class="toc-text">C52、C2051的资源与C51比较</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%95%E8%84%9A"><span class="toc-number">2.</span> <span class="toc-text">引脚</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%B5%E6%BA%90%E5%BC%95%E8%84%9A"><span class="toc-number">2.1.</span> <span class="toc-text">电源引脚</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%96%E6%8E%A5%E6%99%B6%E4%BD%93%E5%BC%95%E8%84%9A"><span class="toc-number">2.2.</span> <span class="toc-text">外接晶体引脚</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%8D%E4%BD%8DRST-9"><span class="toc-number">2.3.</span> <span class="toc-text">复位RST 9</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E5%BC%95%E8%84%9A-I-O"><span class="toc-number">2.4.</span> <span class="toc-text">输入输出引脚(I&#x2F;O)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#P0%E7%AB%AF%E5%8F%A3-P0-0%E2%80%94P0-7"><span class="toc-number">2.4.1.</span> <span class="toc-text">P0端口[P0.0—P0.7]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P1%E7%AB%AF%E5%8F%A3-P1-0%E2%80%94P1-7"><span class="toc-number">2.4.2.</span> <span class="toc-text">P1端口[P1.0—P1.7]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P2%E7%AB%AF%E5%8F%A3-P2-0%E2%80%94P2-7"><span class="toc-number">2.4.3.</span> <span class="toc-text">P2端口[P2.0—P2.7]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P3%E7%AB%AF%E5%8F%A3-P3-0%E2%80%94P3-7"><span class="toc-number">2.4.4.</span> <span class="toc-text">P3端口[P3.0—P3.7]</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E7%9A%84%E6%8E%A7%E5%88%B6%E6%88%96%E5%A4%8D%E7%94%A8%E5%BC%95%E8%84%9A"><span class="toc-number">2.5.</span> <span class="toc-text">其他的控制或复用引脚</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ALE-PROG-30"><span class="toc-number">2.5.1.</span> <span class="toc-text">ALE&#x2F;-PROG 30</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PSEN-29"><span class="toc-number">2.5.2.</span> <span class="toc-text">PSEN 29</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#EA-VPP-31"><span class="toc-number">2.5.3.</span> <span class="toc-text">-EA&#x2F;VPP 31</span></a></li></ol></li></ol></li></ol></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By 「王圣奇」</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Hello, Welcome to my blog!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">简</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',()=> {preloader.endLoading()})</script><div class="js-pjax"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-nest.min.js"></script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-show-text.min.js" async="async" mobile="false"></script></div></body></html>
